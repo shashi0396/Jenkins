@@ -5,7 +5,9 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Build triggered using Jenkinsfile'
+                sh 'ls -la'
                 sh 'date'
+                echo 'webhook trigger successful - from push event'
             }
         }
     }
