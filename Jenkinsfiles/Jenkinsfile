@@ -1,0 +1,61 @@
+// Declarative pipeline syntax
+
+pipeline {
+
+    agent any
+    
+    stages {
+        stage('checkout-git') {
+            steps {
+                git clone "https://github.com/shashi0396/Jenkins.git"
+            }
+        }
+        stage('build & compile') {
+            steps {
+                sh 'echo "Building the project ..."'
+                sh 'echo "Compiling the project ..."'
+                sh "ls -la"
+            }
+        }
+
+        stage('unit test') {
+            steps {
+                sh 'echo "Running unit tests ..."'
+                sh "ls -la"
+                sh 'echo "Unit tests completed."'
+            }
+        }
+
+        stage('docker build') {
+            steps {
+                docker build -t myapp:latest .
+                docker imaages ls
+            }
+        }
+
+        stage('docker image push to registry'){
+            steps {
+                docker tag myapp:latest dockerhub.com/myapp:latest
+                docker push dockerhub.com/myapp:latest
+            }
+        }
+        stage('deploy') {
+            steps {
+                sh "echo 'Deploying the application ...'"
+            }
+        }
+
+        stage ('Cleanup'){
+            steps {
+                sh 'echo "Cleaning up workspace ..."'
+                deleteDir()
+            }
+        }
+
+        stage('Notification'){
+            steps {
+                sh 'echo "Sending notification email ..."'
+            }
+        }
+}
+}
