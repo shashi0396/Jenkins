@@ -1,4 +1,4 @@
-// docker pipeline
+// docker pipeline with deploy steps
 pipeline {
     agent any
 
