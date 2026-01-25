@@ -1,9 +1,9 @@
-// docker pipeline
+// docker pipeline with private docker hub registry
 pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "sun113/jenkins-demo"
+        IMAGE_NAME = "sun113/jenkins-demo" //dockerhub repo name
     }
 
     stages {
@@ -22,7 +22,7 @@ pipeline {
         stage('Login to Docker Hub') {
             steps {
                 withCredentials([usernamePassword(
-                    credentialsId: 'dockerhub-creds',
+                    credentialsId: 'dockerhub-creds',  //credential id from jenkins
                     usernameVariable: 'DOCKER_USER',
                     passwordVariable: 'DOCKER_PASS'
                 )]) {
