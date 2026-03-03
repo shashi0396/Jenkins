@@ -19,22 +19,22 @@ pipeline {
             }
         }
 
-        stage('Login to Docker Hub') {
-            steps {
-                withCredentials([usernamePassword(
-                    credentialsId: 'dockerhub-creds',  //credential id from jenkins
-                    usernameVariable: 'DOCKER_USER',
-                    passwordVariable: 'DOCKER_PASS'
-                )]) {
-                    sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
-                }
-            }
-        }
+        // stage('Login to Docker Hub') {
+        //     steps {
+        //         withCredentials([usernamePassword(
+        //             credentialsId: 'dockerhub-creds',  //credential id from jenkins
+        //             usernameVariable: 'DOCKER_USER',
+        //             passwordVariable: 'DOCKER_PASS'
+        //         )]) {
+        //             sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
+        //         }
+        //     }
+        // }
 
-        stage('Push Image') {
-            steps {
-                sh 'docker push $IMAGE_NAME:latest'
-            }
-        }
+        // stage('Push Image') {
+        //     steps {
+        //         sh 'docker push $IMAGE_NAME:latest'
+        //     }
+        // }
     }
 }
