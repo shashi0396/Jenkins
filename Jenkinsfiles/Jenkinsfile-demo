@@ -29,16 +29,16 @@ pipeline {
         stage('docker build') {
             steps {
                 docker build -t myapp:latest .
-                docker imaages ls
+                docker images ls
             }
         }
 
-        stage('docker image push to registry'){
-            steps {
-                docker tag myapp:latest dockerhub.com/myapp:latest
-                docker push dockerhub.com/myapp:latest
-            }
-        }
+        // stage('docker image push to registry'){
+        //     steps {
+        //         docker tag myapp:latest dockerhub.com/myapp:latest
+        //         docker push dockerhub.com/myapp:latest
+        //     }
+        // }
         stage('deploy') {
             steps {
                 sh "echo 'Deploying the application ...'"
