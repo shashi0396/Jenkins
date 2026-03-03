@@ -28,5 +28,11 @@ pipeline {
                 sh "echo 'deployment successful'"
             }
         }
+        stage ("deploy to production") {
+            steps {
+                sh "echo 'deploying to production environment'"
+                sh "echo 'deployment successful'"
+            }
+        }
 }
 }
