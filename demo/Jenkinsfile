@@ -21,6 +21,12 @@ pipeline {
                 sh "ls -la"
                 sh "echo 'unit tests successful'"
             }
-    }
+        }
+        stage ("deploy to staging") {
+            steps {
+                sh "echo 'deploying to staging environment'"
+                sh "echo 'deployment successful'"
+            }
+        }
 }
 }
