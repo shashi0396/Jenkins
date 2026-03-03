@@ -38,6 +38,8 @@ pipeline {
             steps {
                 sh "echo 'notifying the team about the deployment'"
                 sh "echo 'notification sent successfully'"
+
+                sh "echo 'Jenkins pipeline execution completed successfully'"
             }
         }
 }
