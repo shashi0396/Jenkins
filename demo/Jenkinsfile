@@ -1,0 +1,26 @@
+// Declarative jenkinsfile - groovy syntax
+
+pipeline {
+    agent any
+    stages {
+        stage("checkout git"){
+            steps {
+                sh "echo 'checkout git'"
+            }
+        }
+        stage("build and compile") {
+            steps {
+                sh "echo 'building the project'"
+                sh "echo 'compiling the project'"
+                sh "echo 'build and compile successful'"
+            }
+        }
+        stage ("unit test"){
+            steps {
+                sh "echo 'running unit tests'"
+                sh "ls -la"
+                sh "echo 'unit tests successful'"
+            }
+    }
+}
+}
