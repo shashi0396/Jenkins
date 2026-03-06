@@ -29,7 +29,7 @@ pipeline {
         stage('docker build') {
             steps {
                 sh "docker build -t myapp:latest ."
-                sh "docker images ls"
+                sh "docker image ls"
             }
         }
 
